@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Hello World | Android的深夜食堂</title>
+    <title>Android 7.0变化之Uri的使用（一） | Android深夜食堂</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,18 +12,21 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hello World | Android的深夜食堂">
-    <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="twitter:title" content="Android 7.0变化之Uri的使用（一） | Android深夜食堂">
+    <meta name="twitter:description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Hello World | Android的深夜食堂">
-    <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta property="og:title" content="Android 7.0变化之Uri的使用（一） | Android深夜食堂">
+    <meta property="og:description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     
     <meta name="author" content="Tracy Tong">
@@ -58,8 +61,8 @@ Quick">
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/" title="前往 Android的深夜食堂 的主页"><img src="/images/avatar.jpg" width="80" alt="Android的深夜食堂 logo" class="panel-cover__logo logo" /></a>
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android的深夜食堂">Android的深夜食堂</a></h1>
+        <a href="/" title="前往 Android深夜食堂 的主页"><img src="/images/avatar.jpg" width="80" alt="Android深夜食堂 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android深夜食堂">Android深夜食堂</a></h1>
         
         <hr class="panel-cover__divider" />
         <p class="panel-cover__description"></p>
@@ -70,10 +73,6 @@ Quick">
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
               <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
-            
-              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
-            
-              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
             
             </ul>
           </nav>
@@ -150,19 +149,83 @@ Quick">
       </span> 
    
     </div>
-    <h1 class="post-title">Hello World</h1>
+    <h1 class="post-title">Android 7.0变化之Uri的使用（一）</h1>
   </header>
 
   <section class="post">
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <p>第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。</p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。</p>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File file)。但在7.0中，官方对于文件访问的安全性做了提升，<font color="#4590a3"><strong>禁止向您应用外的app公开 file://URI。</strong></font>也就是系统照片的crop应用无法访问你的照片文件，否则会出现FileUriExposedException异常。详情参阅<a href="https://developer.android.com/about/versions/nougat/android-7.0-changes.html" target="_blank" rel="external">在应用间共享文件</a></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>使用<a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html" target="_blank" rel="external">FileProvider</a></p>
+<p>首先在AndroidManifest.xml中声明一个provider</p>
+<pre><code>&lt;manifest&gt;
+...
+&lt;application&gt;
+    ...
+    &lt;provider
+        android:name=&quot;android.support.v4.content.FileProvider&quot;
+        android:authorities=&quot;com.your.fileProvider&quot;
+        android:grantUriPermissions=&quot;true&quot;
+        android:exported=&quot;false&quot;&gt;
+        &lt;meta-data
+            android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+            android:resource=&quot;@xml/file_paths&quot; /&gt;
+    &lt;/provider&gt;
+    ...
+&lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre><p>然后在/res/xml目录下新建一个file_paths.xml，声明需要访问的目录。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;paths xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;external-path
+    name=&quot;external_files&quot;
+    path=&quot;.&quot; /&gt;
+&lt;/paths&gt;
+</code></pre><p>其中的元素代表了不同的根目录</p>
+<table>
+<thead>
+<tr>
+<th>Cell</th>
+<th style="text-align:center">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>files-path</td>
+<td style="text-align:center">Context.getFilesDir().</td>
+</tr>
+<tr>
+<td>cache-path</td>
+<td style="text-align:center">getCacheDir().</td>
+</tr>
+<tr>
+<td>external-path</td>
+<td style="text-align:center">Environment.getExternalStorageDirectory().</td>
+</tr>
+<tr>
+<td>external-files-path</td>
+<td style="text-align:center">Context.getExternalFilesDir(String)</td>
+</tr>
+<tr>
+<td>external-cache-path</td>
+<td style="text-align:center">Context.getExternalCacheDir().</td>
+</tr>
+</tbody>
+</table>
+<p>然后使用fileprovider读取文件</p>
+<p>原先</p>
+<pre><code>Uri = Uri.fromFile(new File(strFilePath))
+</code></pre><p>改为现在</p>
+<pre><code>Uri uri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + &quot;.fileProvider&quot;, new File(strFilePath));
+</code></pre><p>上面解释过了，如果只是在app内读取uri，那么到现在已经完成了，但是如果要调用外部app来访问这个file（例如调用系统的crop对相片进行裁剪），则还需要添加授权操作。具体的操作就是在调用crop前，授予权限。</p>
+<pre><code>List&lt;ResolveInfo&gt; resInfoList = getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        for (ResolveInfo resolveInfo : resInfoList) {
+            String packageName = resolveInfo.activityInfo.packageName;
+            grantUriPermission(packageName, photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+</code></pre><p>这里提供了一个较为简便的方法，如果你不知道你所调用的app的包名，可以遍历所有的package，都授予读写权限。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>安全性上，android 7.0做了很大的提升，需要开发者多注意。是坑，亦是革新。</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>在Andorid 7.0系统下，当app对相机和外置储存卡进行使用操作的时候，都需要先请求用户权限，允许以后才可以调用。这个将在下一篇当中讲解。</p>
 
   </section>
 

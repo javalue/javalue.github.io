@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Android的深夜食堂</title>
+    <title>Android深夜食堂</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Android的深夜食堂">
+    <meta name="twitter:title" content="Android深夜食堂">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Android的深夜食堂">
+    <meta property="og:title" content="Android深夜食堂">
     <meta property="og:description" content="">
 
     
@@ -55,8 +55,8 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/" title="前往 Android的深夜食堂 的主页"><img src="/images/avatar.jpg" width="80" alt="Android的深夜食堂 logo" class="panel-cover__logo logo" /></a>
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android的深夜食堂">Android的深夜食堂</a></h1>
+        <a href="/" title="前往 Android深夜食堂 的主页"><img src="/images/avatar.jpg" width="80" alt="Android深夜食堂 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android深夜食堂">Android深夜食堂</a></h1>
         
         <hr class="panel-cover__divider" />
         <p class="panel-cover__description"></p>
@@ -67,10 +67,6 @@
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
               <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
-            
-              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
-            
-              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
             
             </ul>
           </nav>
@@ -143,11 +139,12 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/23/hello-world/" title="link to post.title">Hello World</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/02/23/hello-world/" title="link to post.title">Android 7.0变化之Uri的使用（一）</a></h2>
       <p class="excerpt">
     
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
+      第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-02-23T01:52:27.637Z" class="post-list__meta--date date">2017-02-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/02/23/hello-world/">继续阅读</a></div>
