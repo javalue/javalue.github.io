@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Android深夜食堂</title>
+    <title>Android 7.0变化之Uri的使用（一） | Android深夜食堂</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,21 +12,21 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="title:Android 7.0变化之Uri的使用（一）第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+    <meta name="description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
 场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
-原因分析在Android N之前，对于Uri形">
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Android深夜食堂">
-    <meta name="twitter:description" content="title:Android 7.0变化之Uri的使用（一）第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+    <meta name="twitter:title" content="Android 7.0变化之Uri的使用（一） | Android深夜食堂">
+    <meta name="twitter:description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
 场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
-原因分析在Android N之前，对于Uri形">
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Android深夜食堂">
-    <meta property="og:description" content="title:Android 7.0变化之Uri的使用（一）第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+    <meta property="og:title" content="Android 7.0变化之Uri的使用（一） | Android深夜食堂">
+    <meta property="og:description" content="第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
 场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
-原因分析在Android N之前，对于Uri形">
+原因分析在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File fi">
 
     
     <meta name="author" content="Tracy Tong">
@@ -149,12 +149,11 @@
       </span> 
    
     </div>
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Android 7.0变化之Uri的使用（一）</h1>
   </header>
 
   <section class="post">
-    <hr>
-<h2 id="title-Android-7-0变化之Uri的使用（一）"><a href="#title-Android-7-0变化之Uri的使用（一）" class="headerlink" title="title:Android 7.0变化之Uri的使用（一）"></a>title:Android 7.0变化之Uri的使用（一）</h2><p>第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。</p>
+    <p>第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。</p>
 <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。</p>
 <h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>在Android N之前，对于Uri形式文件的访问一般采用Uri.fromFile(File file)。但在7.0中，官方对于文件访问的安全性做了提升，<font color="#4590a3"><strong>禁止向您应用外的app公开 file://URI。</strong></font>也就是系统照片的crop应用无法访问你的照片文件，否则会出现FileUriExposedException异常。详情参阅<a href="https://developer.android.com/about/versions/nougat/android-7.0-changes.html" target="_blank" rel="external">在应用间共享文件</a></p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>使用<a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html" target="_blank" rel="external">FileProvider</a></p>
@@ -237,12 +236,11 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/08/24/optimization/" title=""></a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/08/24/optimization/" title="Android 减少无用布局">Android 减少无用布局</a></h2>
                 <p class="excerpt">
                 
-                
-title:Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
-场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好
+                讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置cen
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2017-08-24T06:45:33.883Z" class="post-list__meta--date date">2017-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/08/24/optimization/">继续阅读</a></div>

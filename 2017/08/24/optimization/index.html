@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Android深夜食堂</title>
+    <title>Android 减少无用布局 | Android深夜食堂</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,18 +12,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="title:Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
-场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出wa">
+    <meta name="description" content="讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，parent is possi">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Android深夜食堂">
-    <meta name="twitter:description" content="title:Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
-场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出wa">
+    <meta name="twitter:title" content="Android 减少无用布局 | Android深夜食堂">
+    <meta name="twitter:description" content="讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，parent is possi">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Android深夜食堂">
-    <meta property="og:description" content="title:Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
-场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出wa">
+    <meta property="og:title" content="Android 减少无用布局 | Android深夜食堂">
+    <meta property="og:description" content="讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，parent is possi">
 
     
     <meta name="author" content="Tracy Tong">
@@ -146,12 +146,11 @@
       </span> 
    
     </div>
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Android 减少无用布局</h1>
   </header>
 
   <section class="post">
-    <hr>
-<h2 id="title-Android-减少无用布局"><a href="#title-Android-减少无用布局" class="headerlink" title="title:Android 减少无用布局"></a>title:Android 减少无用布局</h2><p>讲一下android studio Inspect Code中的Android &gt; Lint &gt; Performance &gt;UseLess parent layout。</p>
+    <p>讲一下android studio Inspect Code中的Android &gt; Lint &gt; Performance &gt;UseLess parent layout。</p>
 <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，parent is possibly useless。</p>
 <h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>添加了一个不必要的额外的视图（增加你的布局深度）。</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -208,12 +207,12 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/02/23/uri_7.0/" title=""></a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/23/uri_7.0/" title="Android 7.0变化之Uri的使用（一）">Android 7.0变化之Uri的使用（一）</a></h2>
                 <p class="excerpt">
                 
-                
-title:Android 7.0变化之Uri的使用（一）第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
-场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个out
+                第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，对相片进行剪辑，最后上传处理完成的照片。
+原因分
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2017-02-23T01:52:27.637Z" class="post-list__meta--date date">2017-02-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/02/23/uri_7.0/">继续阅读</a></div>
