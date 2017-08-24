@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Android深夜食堂</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Android深夜食堂">
+    <meta name="twitter:description" content="Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Android深夜食堂">
+    <meta property="og:description" content="Android 减少无用布局讲一下android studio Inspect Code中的Android &amp;gt; Lint &amp;gt; Performance &amp;gt;UseLess parent layout。
+场景在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，">
+
+    
+    <meta name="author" content="Tracy Tong">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/08/24/optimization/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Android深夜食堂 的主页"><img src="/images/avatar.jpg" width="80" alt="Android深夜食堂 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android深夜食堂">Android深夜食堂</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/u/1281011215" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/javalue" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+        <li class="navigation__item">
+            <a href="http://stackoverflow.com/users/4840187/tong-tracy" title="Stack Overflow" target="_blank">
+                <i class='social fa fa-stack-overflow'></i>
+                <span class="label">Stack Overflow</span>
+            </a>
+        </li>
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-08-24T06:45:33.883Z" class="post-list__meta--date date">2017-08-24</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title"></h1>
+  </header>
+
+  <section class="post">
+    <hr>
+<h2 id="Android-减少无用布局"><a href="#Android-减少无用布局" class="headerlink" title="Android 减少无用布局"></a>Android 减少无用布局</h2><p>讲一下android studio Inspect Code中的Android &gt; Lint &gt; Performance &gt;UseLess parent layout。</p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在布局对齐的时候，总是会写一个RelativeLayout去包裹好几个child View，再通过设置centerInParent去控制居中。这时候AS往往会给出warning，parent is possibly useless。</p>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>添加了一个不必要的额外的视图（增加你的布局深度）。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:id=&quot;@+id/detailLayout&quot;
+        android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot; &gt;
+
+    &lt;RelativeLayout
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot; &gt;
+        &lt;Button
+            android:id=&quot;@+id/downloadFormsButton&quot;
+            android:enabled=&quot;false&quot;
+            android:layout_alignParentLeft=&quot;true&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_margin=&quot;10dp&quot;
+            android:text=&quot;@string/download_forms_button&quot; /&gt;
+        &lt;TextView
+            android:id=&quot;@+id/formErrorMsg&quot;
+            android:layout_alignParentRight=&quot;true&quot;
+            android:layout_alignParentBottom=&quot;true&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:padding=&quot;10dp&quot;
+            android:textSize=&quot;16dp&quot; &gt;
+        &lt;/TextView&gt;
+    &lt;/RelativeLayout&gt;
+&lt;/LinearLayout&gt;
+</code></pre><p><strong>ps:如果加一个background，warning就没有了。</strong></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>如果布局简单，不影响，直接删除父布局</li>
+<li>使用space和Linenarlayout，并设置layout_weight来控制居中</li>
+<li>充分使用TextView的drawable属性（drawableTop）</li>
+<li><p>如果是root layout，那么可以在inflate的时候，注意参数的传值</p>
+<pre><code>public View inflate(@LayoutRes int resource, @Nullable ViewGroup root, boolean attachToRoot)
+</code></pre></li>
+</ol>
+<p>当root不为null，attachToRoot为true时，表示将resource指定的布局添加到root中，添加的过程中resource所指定的的布局的根节点的各个属性都是有效的</p>
+<p>如果我想让linearlayout的根节点有效，又不想让其处于某一个容器中，那我就可以设置root不为null，而attachToRoot为false</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><em>以上所有内容对过度绘制完全没有作用</em></p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3>
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/23/uri_7.0/" title=""></a></h2>
+                <p class="excerpt">
+                
+                
+Android 7.0变化之Uri的使用（一）第一篇讲一下android N使用中对于Uri形式读取文件的不同之处。
+场景在使用相机拍照生成头像时，之前的逻辑是，先用intent唤起照相机，并传入一个图片输出的地址，拍摄完毕后，再用intent唤起系统的照片crop，同样传入一个output地址，
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-02-23T01:52:27.637Z" class="post-list__meta--date date">2017-02-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/02/23/uri_7.0/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站由 <a href="/">@Tong</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
